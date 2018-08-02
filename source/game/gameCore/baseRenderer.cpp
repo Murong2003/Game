@@ -69,50 +69,112 @@ Game::Core::BaseRenderer::Renderer::~Renderer() {
 
 void Game::Core::BaseRenderer::Renderer::compileShader(Game::type_uint in_type) {
 	Game::type_id temp_shader = glCreateShader(in_type);
-	std::string temp_source = (in_type == GL_VERTEX_SHADER) ? this->shader_vertex_source : this->shader_fragment_source;
+	const char *temp_source = (in_type == GL_VERTEX_SHADER) ? this->shader_vertex_source.c_str() : this->shader_fragment_source.c_str();
 
-	glShaderSource(temp_shader, 1, (char**)temp_source.c_str(), nullptr);
+	glShaderSource(temp_shader, 1, &temp_source, nullptr);
 	glCompileShader(temp_shader);
-
-	Game::type_status temp_shader_status = true;
-	glGetShaderiv(temp_shader, GL_COMPILE_STATUS, (int*)temp_shader_status);
-
-	if (temp_shader_status == false) {
-		char temp_log[$GAME_ARRAY_MAX$];
-		Game::type_uint temp_log_size = 0;
-		glGetShaderInfoLog(temp_shader, $GAME_ARRAY_MAX$, (int*)temp_log_size, temp_log);
-
-		std::string temp_output = "Failed to compile shader: " + temp_log_size + '>' + temp_source;
-		___output_console_error(temp_output);
-	}
 	
 	// Deposit
 	(in_type == GL_VERTEX_SHADER) ? this->shader_vertex = temp_shader : this->shader_fragment = temp_shader;
+
+	// Check
+	this->cheekError(in_type);
 }
 
 void Game::Core::BaseRenderer::Renderer::linkProgram() {
-	Game::type_id &temp_program_return = this->shader_program;
+	Game::type_id &temp_program_deposit = this->shader_program;
 	Game::type_id temp_program = glCreateProgram();
 	glAttachShader(temp_program, this->shader_vertex);
 	glAttachShader(temp_program, this->shader_fragment);
 	glLinkProgram(temp_program);
 
-	Game::type_status temp_shader_status = true;
-	glGetShaderiv(temp_program, GL_LINK_STATUS, (int*)temp_shader_status);
-
-	if (temp_shader_status == false) {
-		char temp_log[$GAME_ARRAY_MAX$];
-		Game::type_uint temp_log_size = 0;
-		glGetProgramInfoLog(temp_program, $GAME_ARRAY_MAX$, (int*)temp_log_size, temp_log);
-
-		std::string temp_output = "Failed to link shader program: " + *temp_log;
-		___output_console_error(temp_output);
-	}
-
 	// Deposit
-	temp_program_return = temp_program;
+	temp_program_deposit = temp_program;
+
+	// Cheek
+	this->cheekError(GL_PROGRAM);
 }
 
 void Game::Core::BaseRenderer::Renderer::useProgram() const {
 	glUseProgram(this->shader_program);
+}
+
+void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
+	int temp_status = true;
+	char temp_log[$GAME_ARRAY_MAX$];
+	std::string temp_message = "Failed to ";
+
+	if (in_type == GL_VERTEX_SHADER) {
+		glGetShaderiv(this->shader_vertex, GL_COMPILE_STATUS, &temp_status);
+	} else if (in_type == GL_FRAGMENT_SHADER) {
+		glGetShaderiv(this->shader_fragment, GL_COMPILE_STATUS, &temp_status);
+	} else if (in_type == GL_PROGRAM) {
+		glGetProgramiv(this->shader_program, GL_LINK_STATUS, &temp_status);
+	}
+
+	if (temp_status == false) {
+		if (in_type == GL_PROGRAM) {
+			glGetShaderInfoLog(this->shader_program, $GAME_ARRAY_MAX$, nullptr, temp_log);
+			temp_message += "link program: \n";
+		} else {
+			if (in_type == GL_VERTEX_SHADER) {
+				glGetShaderInfoLog(this->shader_program, $GAME_ARRAY_MAX$, nullptr, temp_log);
+				temp_message += "compile vertex shader: \n";
+			} else if (in_type == GL_FRAGMENT_SHADER) {
+				glGetShaderInfoLog(this->shader_program, $GAME_ARRAY_MAX$, nullptr, temp_log);
+				temp_message += "compile fragment shader: \n";
+			}
+		}
+
+		temp_message += temp_log;
+		___output_console_error(temp_message);
+	}
+}
+
+void Game::Core::BaseRenderer::Renderer::setBool(std::string in_name, bool in_value) const {
+	glUniform1i(glGetUniformLocation(this->shader_program, in_name.c_str()), (int)in_value);
+}
+
+void Game::Core::BaseRenderer::Renderer::setInt(std::string in_name, int in_value) const {
+	glUniform1i(glGetUniformLocation(this->shader_program, in_name.c_str()), in_value);
+}
+
+void Game::Core::BaseRenderer::Renderer::setFloat(std::string in_name, float in_value) const {
+	glUniform1f(glGetUniformLocation(this->shader_program, in_name.c_str()), in_value);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec2(std::string in_name, const glm::vec2 &in_value) const {
+	glUniform2fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, &in_value[0]);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec2(std::string in_name, float in_x, float in_y) const {
+	glUniform2f(glGetUniformLocation(this->shader_program, in_name.c_str()), in_x, in_y);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec3(std::string in_name, const glm::vec3 &in_value) const {
+	glUniform3fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, &in_value[0]);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec3(std::string in_name, float in_x, float in_y, float in_z) const {
+	glUniform3f(glGetUniformLocation(this->shader_program, in_name.c_str()), in_x, in_y, in_z);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec4(std::string in_name, const glm::vec4 &in_value) const {
+	glUniform4fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, &in_value[0]);
+}
+
+void Game::Core::BaseRenderer::Renderer::setVec4(std::string in_name, float in_x, float in_y, float in_z, float in_w) {
+	glUniform4f(glGetUniformLocation(this->shader_program, in_name.c_str()), in_x, in_y, in_z, in_w);
+}
+
+void Game::Core::BaseRenderer::Renderer::setMat2(std::string in_name, const glm::mat2 &in_mat) const {
+	glUniformMatrix2fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, false, &in_mat[0][0]);
+}
+
+void Game::Core::BaseRenderer::Renderer::setMat3(std::string in_name, const glm::mat3 &in_mat) const {
+	glUniformMatrix3fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, false, &in_mat[0][0]);
+}
+
+void Game::Core::BaseRenderer::Renderer::setMat4(std::string in_name, const glm::mat4 &in_mat) const {
+	glUniformMatrix4fv(glGetUniformLocation(this->shader_program, in_name.c_str()), 1, false, &in_mat[0][0]);
 }

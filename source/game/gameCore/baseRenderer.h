@@ -24,6 +24,21 @@ namespace Game {
 				void compileShader(Game::type_uint in_type);
 				void linkProgram();
 				void useProgram() const;
+				void cheekError(Game::type_uint in_type);
+
+				// Shader operator
+				void setBool(std::string in_name, bool in_value) const;
+				void setInt(std::string in_name, int in_value) const;
+				void setFloat(std::string in_name, float in_value) const;
+				void setVec2(std::string in_name, const glm::vec2 &in_value) const;
+				void setVec2(std::string in_name, float in_x, float in_y) const;
+				void setVec3(std::string in_name, const glm::vec3 &in_value) const;
+				void setVec3(std::string in_name, float in_x, float in_y, float in_z) const;
+				void setVec4(std::string in_name, const glm::vec4 &in_value) const;
+				void setVec4(std::string in_name, float in_x, float in_y, float in_z, float in_w);
+				void setMat2(std::string in_name, const glm::mat2 &in_mat) const;
+				void setMat3(std::string in_name, const glm::mat3 &in_mat) const;
+				void setMat4(std::string in_name, const glm::mat4 &in_mat) const;
 
 				// Get
 				std::string getShaderVertexSource() const { return this->shader_vertex_source; }
