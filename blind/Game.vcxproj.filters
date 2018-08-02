@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="gameCore">
+      <UniqueIdentifier>{b2b76c22-f22b-425f-bd27-d3ac090246fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameEngine">
+      <UniqueIdentifier>{3cd99a63-2682-45b4-9c1e-99c60d81bbd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameCore\base">
+      <UniqueIdentifier>{8cf2327a-b773-497e-8775-b1343cfca2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameEngine\base">
+      <UniqueIdentifier>{785c9338-6009-4b23-aeca-51c150082829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameEngine\tools">
+      <UniqueIdentifier>{2822d6d4-9810-41d5-8ca2-f880789aa3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameCore\baseRenderer">
+      <UniqueIdentifier>{ac45ef66-4970-45ef-b328-fa50e0028878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameCore\baseWindow">
+      <UniqueIdentifier>{ab02f936-4044-4fb9-b1a4-adde01a3fb02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\game\gameCore\base.cpp">
+      <Filter>gameCore\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\game.cpp" />
+    <ClCompile Include="..\source\game\gameCore\baseRenderer.cpp">
+      <Filter>gameCore\baseRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameCore\baseWindow.cpp">
+      <Filter>gameCore\baseWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\baseFile.cpp">
+      <Filter>gameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\baseLog.cpp">
+      <Filter>gameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\toolConversion.cpp">
+      <Filter>gameEngine\tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\game\gameCore\base.h">
+      <Filter>gameCore\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameCore\baseInclude.h">
+      <Filter>gameCore\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameCore\baseTemp.h">
+      <Filter>gameCore\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameCore\baseRenderer.h">
+      <Filter>gameCore\baseRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameCore\baseWindow.h">
+      <Filter>gameCore\baseWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\base.h">
+      <Filter>gameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\toolConversion.h">
+      <Filter>gameEngine\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseLog.h">
+      <Filter>gameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseFile.h">
+      <Filter>gameEngine\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
