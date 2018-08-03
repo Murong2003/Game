@@ -17,6 +17,12 @@
 namespace Game {
 	namespace Core {
 		namespace Backend {
+			namespace GL {
+				void enable(Game::type_uint in_type);
+				void disable(Game::type_uint in_type);
+				Game::type_uint checkError();
+			}
+
 			namespace GLFW {
 				void poll();
 				void quit();

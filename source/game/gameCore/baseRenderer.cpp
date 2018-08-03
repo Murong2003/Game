@@ -13,8 +13,8 @@ Game::Core::BaseRenderer::Renderer Game::Core::BaseRenderer::initializeRenderer(
 	// Load shader source
 	std::string temp_vertex_source, temp_fragment_source;
 	Game::Engine::BaseFile::File temp_file_vertex, temp_file_fragment;
-	temp_file_vertex.open("../resource/shader/vertex.txt", true);
-	temp_file_fragment.open("../resource/shader/fragment.txt", true);
+	temp_file_vertex.open("../resource/shader/vertex.vert", true);
+	temp_file_fragment.open("../resource/shader/fragment.frag", true);
 	temp_vertex_source = temp_file_vertex.read().c_str();
 	temp_fragment_source = temp_file_fragment.read().c_str();
 	temp_file_vertex.close();
@@ -29,6 +29,9 @@ Game::Core::BaseRenderer::Renderer Game::Core::BaseRenderer::initializeRenderer(
 	for (Game::type_id i = 0; i < temp_array_string.size(); i++) {
 		temp_array.emplace_back(Game::Engine::ToolConversion::toDouble(temp_array_string[i]));
 	}
+
+	// Set up the OpenGL
+	Game::Core::Backend::GL::enable(GL_DEPTH_TEST);
 
 	// Create shader
 	Game::Core::BaseRenderer::Renderer temp_shader(temp_vertex_source, temp_fragment_source, temp_array);
@@ -100,7 +103,7 @@ void Game::Core::BaseRenderer::Renderer::useProgram() const {
 }
 
 void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
-	int temp_status = true;
+	int temp_status;
 	char temp_log[$GAME_ARRAY_MAX$];
 	std::string temp_message = "Failed to ";
 
@@ -127,7 +130,7 @@ void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
 		}
 
 		temp_message += temp_log;
-		___output_console_error(temp_message);
+		___output_console_error << temp_message;
 	}
 }
 

@@ -9,23 +9,40 @@
 
 #include "baseLog.h"
 
-void Game::Engine::BaseLog::output(Game::Engine::BaseLog::StreamLevel in_level, std::string in_message) {
-	std::string temp_message;
+Game::Engine::BaseLog::Log::Log(Game::Engine::BaseLog::StreamLevel in_level, std::string in_message, std::string in_file, std::string in_function, Game::type_uint in_line)
+	: level(in_level), _file(in_file), _function(in_function), _line(in_line) {
+	this->stream << "[" << in_message << "]";
 
 	switch (in_level) {
 	case Game::Engine::BaseLog::StreamLevel::INFO:
-		temp_message = "[Info] " + in_message;
+		this->stream << "[Info] ";
 		break;
 	case Game::Engine::BaseLog::StreamLevel::WARNING:
-		temp_message = "[Warning] " + in_message;
+		this->stream << "[Warning] ";
 		break;
 	case Game::Engine::BaseLog::StreamLevel::ERROR:
-		temp_message = "[Error] " + in_message;
+		this->stream << "[Error] ";
 		break;
 	}
+}
 
-	if (in_level == Game::Engine::BaseLog::StreamLevel::ERROR)
-		std::cerr << temp_message << std::endl;
+Game::Engine::BaseLog::Log::~Log() {
+	if (this->level == Game::Engine::BaseLog::StreamLevel::ERROR) {
+		this->stream << std::endl
+			<< "\tFile:\t" << this->_file << std::endl
+			<< "\tFunction:\t" << this->_function << std::endl
+			<< "\tLine:\t" << this->_line << std::endl;
+	}
+
+	this->stream << std::endl;
+
+	if (this->level == Game::Engine::BaseLog::StreamLevel::ERROR)
+		this->output(std::cerr);
 	else
-		std::cout << temp_message << std::endl;
+		this->output(std::cout);
+}
+
+void Game::Engine::BaseLog::Log::output(std::ostream &in_ostream) const {
+	std::string temp_message = this->stream.str();
+	in_ostream << temp_message;
 }

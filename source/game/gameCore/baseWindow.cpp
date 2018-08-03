@@ -34,7 +34,7 @@ Game::Core::BaseWindow::Window::Window(std::string in_name, Game::type_uint in_s
 
 	temp_window = glfwCreateWindow(in_size_x, in_size_y, in_name.c_str(), nullptr, nullptr);
 	if (temp_window == nullptr)
-		___output_console_error("Create window failed!");
+		___output_console_error << "Create window failed!";
 
 	this->window = temp_window;
 	this->focus();

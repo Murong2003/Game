@@ -55,6 +55,7 @@
 #endif
 
 #define $GAME_ARRAY_MAX$ 0xff
+#define $GAME_API$ "Game"
 
 namespace Game {
 	typedef unsigned int type_uint;
