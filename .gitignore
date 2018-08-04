@@ -33,7 +33,8 @@
 
 # User
 .vs
-temp
+temps
+logs
 *.log
 *.ilk
 *.pdb

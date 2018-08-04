@@ -28,6 +28,9 @@ namespace Game {
 			private:
 				std::fstream stream;
 			};
+
+			void createDirectory(std::string in_path);
+			bool existDirectory(std::string in_path);
 		}
 	}
 }

@@ -11,32 +11,28 @@
 
 int main() {
 	// Initialize engine
-	___output_console_info << "Initializing graphics engine...";
+	stream_console_info << "Initializing graphics engine...";
 	Game::Core::Backend::initializeEngine();
 
 	// Create a window
-	___output_console_info << "Creating window...";
+	stream_console_info << "Creating window...";
 	Game::Core::BaseWindow::Window temp_window($game_name, $window_default_size_x, $window_default_size_y);
 
 	// Initialize renderer
-	___output_console_info << "Initializing renderer...";
+	stream_console_info << "Initializing renderer...";
 	Game::Core::BaseRenderer::Renderer temp_renderer = Game::Core::BaseRenderer::initializeRenderer();
-
-	___output_console_info << "Test info message";
-	___output_console_warning << "Test warning message: " << 233;
-	___output_console_error << "Test error message: " << 1 + 1;
 
 	// Loop
 	do {
-		//temp_renderer.useProgram();
+		temp_renderer.useProgram();
 
-		Game::Core::Backend::GL::checkError();
+		//Game::Core::Backend::GL::checkError();
 
 		temp_window.refresh();
 		Game::Core::Backend::GLFW::poll();
 	} while (!temp_window.getQuit());
 
 	// Terminate
-	___output_console_info << "Waiting for game to end...";
+	stream_console_info << "Waiting for game to end...";
 	Game::Core::Backend::GLFW::quit();
 }

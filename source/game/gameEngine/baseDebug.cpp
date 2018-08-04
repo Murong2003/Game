@@ -7,16 +7,5 @@
 * For more information, see <http://www.gnu.org/licenses/gpl-3.0.html>
 */
 
-#ifndef GAME_ENGINE_STDLIB_H
-#define GAME_ENGINE_STDLIB_H
+#include "baseDebug.h"
 
-#include "../gameCore/baseInclude.h"
-#include "baseLog.h"
-#include "baseFile.h"
-#include "baseConsole.h"
-#include "baseDebug.hpp"
-#include "baseException.hpp"
-#include "toolConversion.h"
-#include "toolTime.h"
-
-#endif // !GAME_ENGINE_STDLIB_H

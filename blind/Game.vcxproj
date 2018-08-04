@@ -27,6 +27,7 @@
     <ClCompile Include="..\source\game\gameEngine\baseFile.cpp" />
     <ClCompile Include="..\source\game\gameEngine\baseLog.cpp" />
     <ClCompile Include="..\source\game\gameEngine\toolConversion.cpp" />
+    <ClCompile Include="..\source\game\gameEngine\toolTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\game\gameCore\base.h" />
@@ -35,10 +36,13 @@
     <ClInclude Include="..\source\game\gameCore\baseWindow.h" />
     <ClInclude Include="..\source\game\gameCore\baseRenderer.h" />
     <ClInclude Include="..\source\game\gameEngine\baseConsole.h" />
+    <ClInclude Include="..\source\game\gameEngine\baseDebug.hpp" />
+    <ClInclude Include="..\source\game\gameEngine\baseException.hpp" />
     <ClInclude Include="..\source\game\gameEngine\baseFile.h" />
     <ClInclude Include="..\source\game\gameEngine\baseLog.h" />
     <ClInclude Include="..\source\game\gameEngine\base.h" />
     <ClInclude Include="..\source\game\gameEngine\toolConversion.h" />
+    <ClInclude Include="..\source\game\gameEngine\toolTime.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -96,7 +100,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\</OutDir>
     <LibraryPath>$(HOMEDRIVE)$(HOMEPATH)\Documents\Development\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(SolutionDir)\temp\</IntDir>
+    <IntDir>$(SolutionDir)\temps\</IntDir>
     <IncludePath>$(HOMEDRIVE)$(HOMEPATH)\Documents\Development\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

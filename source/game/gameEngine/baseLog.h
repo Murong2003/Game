@@ -18,7 +18,8 @@ namespace Game {
 			enum StreamLevel {
 				INFO,
 				WARNING,
-				ERROR
+				ERROR,
+				FATAL
 			};
 
 			class Log {
@@ -48,14 +49,16 @@ namespace Game {
 
 				// Operator
 				void output(std::ostream &in_ostream) const;
+				void outputLog(std::string in_message) const;
 			};
 		}
 	}
 }
 
-#define ___output_console(in_level) Game::Engine::BaseLog::Log::Log(in_level, $GAME_API$, __FILE__, __FUNCTION__, __LINE__)
-#define ___output_console_info ___output_console(Game::Engine::BaseLog::StreamLevel::INFO)
-#define ___output_console_warning ___output_console(Game::Engine::BaseLog::StreamLevel::WARNING)
-#define ___output_console_error ___output_console(Game::Engine::BaseLog::StreamLevel::ERROR)
+#define stream_console(in_level) Game::Engine::BaseLog::Log::Log(in_level, $GAME_API$, __FILE__, __FUNCTION__, __LINE__)
+#define stream_console_info stream_console(Game::Engine::BaseLog::StreamLevel::INFO)
+#define stream_console_warning stream_console(Game::Engine::BaseLog::StreamLevel::WARNING)
+#define stream_console_error stream_console(Game::Engine::BaseLog::StreamLevel::ERROR)
+#define stream_console_fatal stream_console(Game::Engine::BaseLog::StreamLevel::FATAL)
 
 #endif // !GAME_ENGINE_BASE_LOG_H

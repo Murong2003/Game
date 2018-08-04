@@ -61,7 +61,7 @@ Game::type_uint Game::Core::Backend::GL::checkError() {
 			break;
 		}
 
-		___output_console_error << temp_output;
+		stream_console_error << temp_output;
 	}
 
 	return temp_error;

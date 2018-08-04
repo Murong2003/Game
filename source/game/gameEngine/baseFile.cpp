@@ -55,3 +55,16 @@ std::vector<std::string> Game::Engine::BaseFile::File::readArray() {
 Game::Engine::BaseFile::File::~File() {
 	this->close();
 }
+
+void Game::Engine::BaseFile::createDirectory(std::string in_path) {
+	int temp_status = mkdir(in_path.c_str());
+	if (temp_status != 0)
+		stream_console_error << "Failed to create directory!";
+}
+
+bool Game::Engine::BaseFile::existDirectory(std::string in_path) {
+	if ((_access(in_path.c_str(), 0)) == -1)
+		return false;
+	else
+		return true;
+}

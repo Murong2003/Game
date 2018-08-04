@@ -16,9 +16,14 @@
 #include <string>
 #include <vector>
 #include <cstdio>
+#include <ctime>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
+#include <exception>
+#include <io.h>
+#include <direct.h>
 #include <include/glew/glew.h>
 #include <include/glfw/glfw3.h>
 #include <include/glm/glm.hpp>
@@ -33,6 +38,7 @@
 
 #ifdef _WIN32
 #define $GAME_RUNTIME_WINDOWS$
+#undef APIENTRY
 #endif
 
 #ifdef __cplusplus
@@ -55,7 +61,7 @@
 #endif
 
 #define $GAME_ARRAY_MAX$ 0xff
-#define $GAME_API$ "Game"
+#define $GAME_API$ ""
 
 namespace Game {
 	typedef unsigned int type_uint;

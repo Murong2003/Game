@@ -22,6 +22,9 @@
     <Filter Include="gameCore\baseWindow">
       <UniqueIdentifier>{ab02f936-4044-4fb9-b1a4-adde01a3fb02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="gameEngine\baseMaintenance">
+      <UniqueIdentifier>{7dbc22e1-8522-4d36-b93c-d8de548899be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\game\gameCore\base.cpp">
@@ -37,14 +40,17 @@
     <ClCompile Include="..\source\game\gameEngine\baseFile.cpp">
       <Filter>gameEngine\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\game\gameEngine\baseLog.cpp">
-      <Filter>gameEngine\base</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\game\gameEngine\toolConversion.cpp">
       <Filter>gameEngine\tools</Filter>
     </ClCompile>
     <ClCompile Include="..\source\game\gameEngine\baseConsole.cpp">
       <Filter>gameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\toolTime.cpp">
+      <Filter>gameEngine\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\baseLog.cpp">
+      <Filter>gameEngine\baseMaintenance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,14 +75,23 @@
     <ClInclude Include="..\source\game\gameEngine\toolConversion.h">
       <Filter>gameEngine\tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\game\gameEngine\baseLog.h">
-      <Filter>gameEngine\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\game\gameEngine\baseFile.h">
       <Filter>gameEngine\base</Filter>
     </ClInclude>
     <ClInclude Include="..\source\game\gameEngine\baseConsole.h">
       <Filter>gameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\toolTime.h">
+      <Filter>gameEngine\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseException.hpp">
+      <Filter>gameEngine\baseMaintenance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseDebug.hpp">
+      <Filter>gameEngine\baseMaintenance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseLog.h">
+      <Filter>gameEngine\baseMaintenance</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -115,7 +115,7 @@ void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
 		glGetProgramiv(this->shader_program, GL_LINK_STATUS, &temp_status);
 	}
 
-	if (temp_status == false) {
+	if (!temp_status) {
 		if (in_type == GL_PROGRAM) {
 			glGetShaderInfoLog(this->shader_program, $GAME_ARRAY_MAX$, nullptr, temp_log);
 			temp_message += "link program: \n";
@@ -130,7 +130,7 @@ void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
 		}
 
 		temp_message += temp_log;
-		___output_console_error << temp_message;
+		stream_console_error << temp_message;
 	}
 }
 
