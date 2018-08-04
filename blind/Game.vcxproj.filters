@@ -43,6 +43,9 @@
     <ClCompile Include="..\source\game\gameEngine\toolConversion.cpp">
       <Filter>gameEngine\tools</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\game\gameEngine\baseConsole.cpp">
+      <Filter>gameEngine\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\game\gameCore\base.h">
@@ -70,6 +73,9 @@
       <Filter>gameEngine\base</Filter>
     </ClInclude>
     <ClInclude Include="..\source\game\gameEngine\baseFile.h">
+      <Filter>gameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameEngine\baseConsole.h">
       <Filter>gameEngine\base</Filter>
     </ClInclude>
   </ItemGroup>

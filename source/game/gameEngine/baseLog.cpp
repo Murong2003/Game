@@ -15,12 +15,15 @@ Game::Engine::BaseLog::Log::Log(Game::Engine::BaseLog::StreamLevel in_level, std
 
 	switch (in_level) {
 	case Game::Engine::BaseLog::StreamLevel::INFO:
+		Game::Engine::BaseConsole::setColor(this->stream, Game::Engine::BaseConsole::Color::TEXT_WHITE);
 		this->stream << "[Info] ";
 		break;
 	case Game::Engine::BaseLog::StreamLevel::WARNING:
+		Game::Engine::BaseConsole::setColor(this->stream, Game::Engine::BaseConsole::Color::TEXT_YELLOW);
 		this->stream << "[Warning] ";
 		break;
 	case Game::Engine::BaseLog::StreamLevel::ERROR:
+		Game::Engine::BaseConsole::setColor(this->stream, Game::Engine::BaseConsole::Color::TEXT_RED);
 		this->stream << "[Error] ";
 		break;
 	}
@@ -29,9 +32,9 @@ Game::Engine::BaseLog::Log::Log(Game::Engine::BaseLog::StreamLevel in_level, std
 Game::Engine::BaseLog::Log::~Log() {
 	if (this->level == Game::Engine::BaseLog::StreamLevel::ERROR) {
 		this->stream << std::endl
-			<< "\tFile:\t" << this->_file << std::endl
-			<< "\tFunction:\t" << this->_function << std::endl
-			<< "\tLine:\t" << this->_line << std::endl;
+			<< "File: " << this->_file << std::endl
+			<< "Function: " << this->_function << std::endl
+			<< "Line: " << this->_line << std::endl;
 	}
 
 	this->stream << std::endl;
@@ -40,6 +43,9 @@ Game::Engine::BaseLog::Log::~Log() {
 		this->output(std::cerr);
 	else
 		this->output(std::cout);
+
+	// Restore color
+	Game::Engine::BaseConsole::setColor(this->stream, Game::Engine::BaseConsole::Color::TEXT_WHITE);
 }
 
 void Game::Engine::BaseLog::Log::output(std::ostream &in_ostream) const {

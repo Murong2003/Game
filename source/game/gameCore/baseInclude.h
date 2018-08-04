@@ -32,23 +32,23 @@
 #pragma comment(lib, "library/glew32.lib")
 
 #ifdef _WIN32
-#define $_RUNTIME_WINDOWS$
+#define $GAME_RUNTIME_WINDOWS$
 #endif
 
 #ifdef __cplusplus
-#define $_RUNTIME_CPLUSPLUS$
+#define $GAME_RUNTIME_CPLUSPLUS$
 #endif
 
 #ifdef _DEBUG
-#define $_MODE_DEBUG$
+#define $GAME_MODE_DEBUG$
 #endif
 
-#ifndef $_MODE_DEBUG$
+#ifndef $GAME_MODE_DEBUG$
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
 
 #undef NULL
-#ifdef $_RUNTIME_CPLUSPLUS$
+#ifdef $GAME_RUNTIME_CPLUSPLUS$
 #define NULL 0
 #else
 #define NULL (void*)0

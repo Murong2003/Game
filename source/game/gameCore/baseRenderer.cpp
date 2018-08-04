@@ -103,7 +103,7 @@ void Game::Core::BaseRenderer::Renderer::useProgram() const {
 }
 
 void Game::Core::BaseRenderer::Renderer::cheekError(Game::type_uint in_type) {
-	int temp_status;
+	int temp_status = true;
 	char temp_log[$GAME_ARRAY_MAX$];
 	std::string temp_message = "Failed to ";
 

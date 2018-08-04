@@ -13,6 +13,7 @@
 #include "../gameCore/baseInclude.h"
 #include "baseLog.h"
 #include "baseFile.h"
+#include "baseConsole.h"
 #include "toolConversion.h"
 
 #endif // !GAME_ENGINE_STDLIB_H

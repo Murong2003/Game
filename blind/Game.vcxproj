@@ -23,6 +23,7 @@
     <ClCompile Include="..\source\game\gameCore\base.cpp" />
     <ClCompile Include="..\source\game\gameCore\baseWindow.cpp" />
     <ClCompile Include="..\source\game\gameCore\baseRenderer.cpp" />
+    <ClCompile Include="..\source\game\gameEngine\baseConsole.cpp" />
     <ClCompile Include="..\source\game\gameEngine\baseFile.cpp" />
     <ClCompile Include="..\source\game\gameEngine\baseLog.cpp" />
     <ClCompile Include="..\source\game\gameEngine\toolConversion.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\source\game\gameCore\baseTemp.h" />
     <ClInclude Include="..\source\game\gameCore\baseWindow.h" />
     <ClInclude Include="..\source\game\gameCore\baseRenderer.h" />
+    <ClInclude Include="..\source\game\gameEngine\baseConsole.h" />
     <ClInclude Include="..\source\game\gameEngine\baseFile.h" />
     <ClInclude Include="..\source\game\gameEngine\baseLog.h" />
     <ClInclude Include="..\source\game\gameEngine\base.h" />

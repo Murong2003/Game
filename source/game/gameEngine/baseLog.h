@@ -15,7 +15,7 @@
 namespace Game {
 	namespace Engine {
 		namespace BaseLog {
-			enum class StreamLevel {
+			enum StreamLevel {
 				INFO,
 				WARNING,
 				ERROR
@@ -28,9 +28,9 @@ namespace Game {
 
 				// Template
 				template <typename temp_output>
-				temp_output &operator<< (const temp_output &in_stream) {
+				Log &operator<< (const temp_output &in_stream) {
 					this->stream << in_stream;
-					return *this; // TODO: fix bug!
+					return *this;
 				}
 
 				// Get

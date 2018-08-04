@@ -20,7 +20,11 @@ int main() {
 
 	// Initialize renderer
 	___output_console_info << "Initializing renderer...";
-	//Game::Core::BaseRenderer::Renderer temp_renderer = Game::Core::BaseRenderer::initializeRenderer();
+	Game::Core::BaseRenderer::Renderer temp_renderer = Game::Core::BaseRenderer::initializeRenderer();
+
+	___output_console_info << "Test info message";
+	___output_console_warning << "Test warning message: " << 233;
+	___output_console_error << "Test error message: " << 1 + 1;
 
 	// Loop
 	do {
